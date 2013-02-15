@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DDA63CFD16CEB8C50093F596 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA63CFC16CEB8C50093F596 /* Cocoa.framework */; };
+		DDA63D0716CEB8C50093F596 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA63D0516CEB8C50093F596 /* InfoPlist.strings */; };
+		DDA63D0916CEB8C50093F596 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA63D0816CEB8C50093F596 /* main.m */; };
+		DDA63D0D16CEB8C50093F596 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DDA63D0B16CEB8C50093F596 /* Credits.rtf */; };
+		DDA63D1016CEB8C50093F596 /* MOXAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA63D0F16CEB8C50093F596 /* MOXAppDelegate.m */; };
+		DDA63D1316CEB8C60093F596 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDA63D1116CEB8C60093F596 /* MainMenu.xib */; };
+		DDA63D1B16CEB8C60093F596 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA63D1A16CEB8C60093F596 /* SenTestingKit.framework */; };
+		DDA63D1C16CEB8C60093F596 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDA63CFC16CEB8C50093F596 /* Cocoa.framework */; };
+		DDA63D2416CEB8C60093F596 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDA63D2216CEB8C60093F596 /* InfoPlist.strings */; };
+		DDA63D2716CEB8C60093F596 /* MOXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA63D2616CEB8C60093F596 /* MOXTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DDA63D1D16CEB8C60093F596 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDA63CEF16CEB8C50093F596 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DDA63CF716CEB8C50093F596;
+			remoteInfo = MOX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DDA63CF816CEB8C50093F596 /* MOX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDA63CFC16CEB8C50093F596 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		DDA63CFF16CEB8C50093F596 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DDA63D0016CEB8C50093F596 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DDA63D0116CEB8C50093F596 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DDA63D0416CEB8C50093F596 /* MOX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MOX-Info.plist"; sourceTree = "<group>"; };
+		DDA63D0616CEB8C50093F596 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DDA63D0816CEB8C50093F596 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DDA63D0A16CEB8C50093F596 /* MOX-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MOX-Prefix.pch"; sourceTree = "<group>"; };
+		DDA63D0C16CEB8C50093F596 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		DDA63D0E16CEB8C50093F596 /* MOXAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOXAppDelegate.h; sourceTree = "<group>"; };
+		DDA63D0F16CEB8C50093F596 /* MOXAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOXAppDelegate.m; sourceTree = "<group>"; };
+		DDA63D1216CEB8C60093F596 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DDA63D1916CEB8C60093F596 /* MOXTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOXTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDA63D1A16CEB8C60093F596 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		DDA63D2116CEB8C60093F596 /* MOXTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MOXTests-Info.plist"; sourceTree = "<group>"; };
+		DDA63D2316CEB8C60093F596 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DDA63D2516CEB8C60093F596 /* MOXTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOXTests.h; sourceTree = "<group>"; };
+		DDA63D2616CEB8C60093F596 /* MOXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOXTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DDA63CF516CEB8C50093F596 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA63CFD16CEB8C50093F596 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDA63D1516CEB8C60093F596 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA63D1B16CEB8C60093F596 /* SenTestingKit.framework in Frameworks */,
+				DDA63D1C16CEB8C60093F596 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DDA63CED16CEB8C50093F596 = {
+			isa = PBXGroup;
+			children = (
+				DDA63D0216CEB8C50093F596 /* MOX */,
+				DDA63D1F16CEB8C60093F596 /* MOXTests */,
+				DDA63CFB16CEB8C50093F596 /* Frameworks */,
+				DDA63CF916CEB8C50093F596 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DDA63CF916CEB8C50093F596 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63CF816CEB8C50093F596 /* MOX.app */,
+				DDA63D1916CEB8C60093F596 /* MOXTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DDA63CFB16CEB8C50093F596 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63CFC16CEB8C50093F596 /* Cocoa.framework */,
+				DDA63D1A16CEB8C60093F596 /* SenTestingKit.framework */,
+				DDA63CFE16CEB8C50093F596 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDA63CFE16CEB8C50093F596 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63CFF16CEB8C50093F596 /* AppKit.framework */,
+				DDA63D0016CEB8C50093F596 /* CoreData.framework */,
+				DDA63D0116CEB8C50093F596 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		DDA63D0216CEB8C50093F596 /* MOX */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63D0E16CEB8C50093F596 /* MOXAppDelegate.h */,
+				DDA63D0F16CEB8C50093F596 /* MOXAppDelegate.m */,
+				DDA63D1116CEB8C60093F596 /* MainMenu.xib */,
+				DDA63D0316CEB8C50093F596 /* Supporting Files */,
+			);
+			path = MOX;
+			sourceTree = "<group>";
+		};
+		DDA63D0316CEB8C50093F596 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63D0416CEB8C50093F596 /* MOX-Info.plist */,
+				DDA63D0516CEB8C50093F596 /* InfoPlist.strings */,
+				DDA63D0816CEB8C50093F596 /* main.m */,
+				DDA63D0A16CEB8C50093F596 /* MOX-Prefix.pch */,
+				DDA63D0B16CEB8C50093F596 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DDA63D1F16CEB8C60093F596 /* MOXTests */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63D2516CEB8C60093F596 /* MOXTests.h */,
+				DDA63D2616CEB8C60093F596 /* MOXTests.m */,
+				DDA63D2016CEB8C60093F596 /* Supporting Files */,
+			);
+			path = MOXTests;
+			sourceTree = "<group>";
+		};
+		DDA63D2016CEB8C60093F596 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDA63D2116CEB8C60093F596 /* MOXTests-Info.plist */,
+				DDA63D2216CEB8C60093F596 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DDA63CF716CEB8C50093F596 /* MOX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDA63D2A16CEB8C60093F596 /* Build configuration list for PBXNativeTarget "MOX" */;
+			buildPhases = (
+				DDA63CF416CEB8C50093F596 /* Sources */,
+				DDA63CF516CEB8C50093F596 /* Frameworks */,
+				DDA63CF616CEB8C50093F596 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MOX;
+			productName = MOX;
+			productReference = DDA63CF816CEB8C50093F596 /* MOX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DDA63D1816CEB8C60093F596 /* MOXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDA63D2D16CEB8C60093F596 /* Build configuration list for PBXNativeTarget "MOXTests" */;
+			buildPhases = (
+				DDA63D1416CEB8C60093F596 /* Sources */,
+				DDA63D1516CEB8C60093F596 /* Frameworks */,
+				DDA63D1616CEB8C60093F596 /* Resources */,
+				DDA63D1716CEB8C60093F596 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DDA63D1E16CEB8C60093F596 /* PBXTargetDependency */,
+			);
+			name = MOXTests;
+			productName = MOXTests;
+			productReference = DDA63D1916CEB8C60093F596 /* MOXTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DDA63CEF16CEB8C50093F596 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MOX;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Victor Lucero";
+			};
+			buildConfigurationList = DDA63CF216CEB8C50093F596 /* Build configuration list for PBXProject "MOX" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DDA63CED16CEB8C50093F596;
+			productRefGroup = DDA63CF916CEB8C50093F596 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DDA63CF716CEB8C50093F596 /* MOX */,
+				DDA63D1816CEB8C60093F596 /* MOXTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DDA63CF616CEB8C50093F596 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA63D0716CEB8C50093F596 /* InfoPlist.strings in Resources */,
+				DDA63D0D16CEB8C50093F596 /* Credits.rtf in Resources */,
+				DDA63D1316CEB8C60093F596 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDA63D1616CEB8C60093F596 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA63D2416CEB8C60093F596 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DDA63D1716CEB8C60093F596 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDA63CF416CEB8C50093F596 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA63D0916CEB8C50093F596 /* main.m in Sources */,
+				DDA63D1016CEB8C50093F596 /* MOXAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDA63D1416CEB8C60093F596 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA63D2716CEB8C60093F596 /* MOXTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DDA63D1E16CEB8C60093F596 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DDA63CF716CEB8C50093F596 /* MOX */;
+			targetProxy = DDA63D1D16CEB8C60093F596 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DDA63D0516CEB8C50093F596 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDA63D0616CEB8C50093F596 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DDA63D0B16CEB8C50093F596 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDA63D0C16CEB8C50093F596 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		DDA63D1116CEB8C60093F596 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDA63D1216CEB8C60093F596 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		DDA63D2216CEB8C60093F596 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DDA63D2316CEB8C60093F596 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DDA63D2816CEB8C60093F596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DDA63D2916CEB8C60093F596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DDA63D2B16CEB8C60093F596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOX/MOX-Prefix.pch";
+				INFOPLIST_FILE = "MOX/MOX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DDA63D2C16CEB8C60093F596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOX/MOX-Prefix.pch";
+				INFOPLIST_FILE = "MOX/MOX-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DDA63D2E16CEB8C60093F596 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MOX.app/Contents/MacOS/MOX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOX/MOX-Prefix.pch";
+				INFOPLIST_FILE = "MOXTests/MOXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		DDA63D2F16CEB8C60093F596 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MOX.app/Contents/MacOS/MOX";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOX/MOX-Prefix.pch";
+				INFOPLIST_FILE = "MOXTests/MOXTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DDA63CF216CEB8C50093F596 /* Build configuration list for PBXProject "MOX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA63D2816CEB8C60093F596 /* Debug */,
+				DDA63D2916CEB8C60093F596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DDA63D2A16CEB8C60093F596 /* Build configuration list for PBXNativeTarget "MOX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA63D2B16CEB8C60093F596 /* Debug */,
+				DDA63D2C16CEB8C60093F596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DDA63D2D16CEB8C60093F596 /* Build configuration list for PBXNativeTarget "MOXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA63D2E16CEB8C60093F596 /* Debug */,
+				DDA63D2F16CEB8C60093F596 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DDA63CEF16CEB8C50093F596 /* Project object */;
+}
