@@ -40,7 +40,8 @@
     [encoder encodeObject:self.Manufacturer forKey:@"Manufacturer"];
     [encoder encodeObject:self.Parent forKey:@"Parent"];
     [encoder encodeObject:self.Year forKey:@"Year"];
-
+    [encoder encodeBool:self.Encontrado   forKey:@"Encontrado"];
+    [encoder encodeBool:self.Favorito  forKey:@"Favorito"];
     [encoder encodeInteger:self.GameId forKey:@"GameId"];
 
 }
@@ -51,9 +52,10 @@
         [self setManufacturer:[decoder decodeObjectForKey:@"Manufacturer"] ];
         [self setParent:[decoder decodeObjectForKey:@"Parent"] ];
         [self setYear:[decoder decodeObjectForKey:@"Year"] ];
-
+        self.Encontrado=[decoder decodeBoolForKey:@"Encontrado"];
+        self.Favorito=[decoder decodeBoolForKey:@"Favorito"]; 
         [self setGameId:[decoder decodeIntegerForKey:@"GameId"] ];
-
+        
         
     }
     return self;

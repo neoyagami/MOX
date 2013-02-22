@@ -18,35 +18,24 @@
 @implementation MOXMasterViewController
 
 -(IBAction)Change_filter:(id)sender {
-    NSLog(@"-%@ %lu",[self.FilterField stringValue],[self.MoxGameListNF count ]);
+    //NSLog(@"-%@ %lu",[self.FilterField stringValue],[self.MoxGameListNF count ]);
     NSString *TMPStr=[self.FilterField stringValue];
     [self.MoxGamesList removeAllObjects];
 
     if ([TMPStr length]==0) {
-        NSLog(@"vakcio ");
-        if ([self ShowGood]) {
-            [self.MoxGamesList addObjectsFromArray:self.MoxGameListGood ];
-
-        } else {
-            [self.MoxGamesList addObjectsFromArray:self.MoxGameListNF ];
-
-        }
-        
-    } else {
-        
+        //NSLog(@"vakcio ");
+            [self.MoxGamesList addObjectsFromArray:self.MoxGameListPreFilter ];
+    }
         NSPredicate * FS=[NSPredicate predicateWithFormat:@"Name contains[cd] %@ or Description contains[cd] %@ or Year contains[cd] %@ or Manufacturer contains[cd] %@", TMPStr , TMPStr, TMPStr, TMPStr] ;
         
         NSArray *TmpARR; //Pirate ARRay
-        if ([self ShowGood]) {
-            TmpARR = [self.MoxGameListGood filteredArrayUsingPredicate:FS];
-
-        } else {
-            TmpARR = [self.MoxGameListNF filteredArrayUsingPredicate:FS];
-        }
+    
+    //NSLog(@"%@ ", [[self MoxGameListPreFilter] className ] );
+        TmpARR = [self.MoxGameListPreFilter filteredArrayUsingPredicate:FS];
         [self.MoxGamesList addObjectsFromArray:TmpARR ];
    
 
-    }
+    
     [self.Tabla reloadData];
 
    
@@ -116,8 +105,7 @@
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    NSLog(@"se disparo %lu", [self ShowGood]?[self.MoxGameListGood count]:[self.MoxGamesList count]);
-    return  [self ShowGood]?[self.MoxGameListGood count]:[self.MoxGamesList count];
+    return  [self.MoxGamesList count];
 }
 
 -(void) Close_Config{
@@ -135,7 +123,6 @@
     [self.MoxGameListNF removeAllObjects];
     [self.MoxGamesList removeAllObjects];
 
-    NSLog(@"asdadsads");
     
     NSTask *task;
     task = [[NSTask alloc] init];
@@ -150,23 +137,21 @@
     
     NSFileHandle *file;
     file = [pipe fileHandleForReading];
-    NSLog(@"lanuch");
+    //NSLog(@"lanuch");
     [task launch];
-    NSLog(@"fini");
+    //NSLog(@"fini");
     
     NSData *data;
     data = [file readDataToEndOfFile];
-    NSLog(@"post load");
+    //NSLog(@"post load");
     //NSString *string;
     //string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
-    //NSLog(@"post string");
+    ////NSLog(@"post string");
     NSError *err;
     TBXML *tbxml = [[TBXML alloc] initWithXMLData:data error:&err];
     TBXMLElement *root = [tbxml rootXMLElement];
     TBXMLElement *node = root->firstChild;
-    TBXMLAttribute *attr = node->firstAttribute;
     
-    NSLog(@"ver element %@  attr %@ value %@" ,[TBXML elementName:node],[TBXML attributeName:attr],[TBXML valueOfAttributeNamed:@"nae" forElement:node ] );
     
     
     int Contador=0;
@@ -196,6 +181,8 @@
             
             
         }
+        [Juego setFavorito:NO];
+        [Juego setEncontrado:NO];
         [self.MoxGameListNF addObject:Juego];
         
         
@@ -213,19 +200,36 @@
 -(IBAction)Click_Checkbox:(id)sender {
 
     NSButton * Check = (NSButton *) sender;
-    [self setShowGood:[Check state]==NSOnState];
-    [self.MoxConfigW setConfigDataWindow:[self.MoxConfig CopyConfig] ];
-    [self.MoxConfigW StoreConfig];
-    [self.Tabla reloadData];
+    
+    if ( [ [Check identifier] isEqualToString:@"Audited" ] ) {
+        [self setShowGood:[Check state]==NSOnState];
+        [self.MoxConfigW setConfigDataWindow:[self.MoxConfig CopyConfig] ];
+        [self.MoxConfigW StoreConfig];
+
+    } else {
+        [self setShowFavorites:[Check state]==NSOnState];
+        [self.MoxConfigW setConfigDataWindow:[self.MoxConfig CopyConfig] ];
+        [self.MoxConfigW StoreConfig];
 
     
+    
+    }
+
+    
+    [self ApplyFilters];
+    if ( [ [self.FilterField stringValue] length ]==0 ) {
+        [self.Tabla reloadData];
+
+    } else {
+        [self Change_filter:[self FilterField]];
+    }
     
 }
 
 -(IBAction)GameSelected:(id)sender {
      NSTableView *v = (NSTableView *)sender;
   
-    NSLog(@"sc %lu",[v selectedRow]);
+    //NSLog(@"sc %lu",[v selectedRow]);
     if (![v isRowSelected:[v selectedRow]])
         return ;
     
@@ -247,8 +251,13 @@
 -(void)double_click:(id)sender
 {
     NSTableView *v = (NSTableView *)sender;
+    if ([self.MoxGamesList count]<[v selectedRow] ) {
+        return;
+    }
     MoxGame *Game=[self.MoxGamesList objectAtIndex:[v selectedRow]];
-
+    if ([self.MoxGamesList count]<[v selectedRow] ) {
+        return;
+    }
     [self RunGame:[Game Name]];
 
 }
@@ -258,7 +267,6 @@
     NSError *Error;
     NSArray *_Dirlist=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self.MoxConfig RomPath] error:&Error ];
     NSMutableArray * Dirlist =[[NSMutableArray alloc]initWithArray:_Dirlist];
-    [self.MoxGameListGood removeAllObjects];
     MoxGame *_GAME;
     NSString *_File;
     NSRange Rango;
@@ -277,28 +285,29 @@
     for (long int Gn=0; Gn<[self.MoxGameListNF count]; Gn++) {
     
         _GAME=[self.MoxGameListNF objectAtIndex:Gn];
-        //NSLog(@"%lu %lu %lu",Gn,[Dirlist count],[self.MoxGameListNF count ]  );
+        ////NSLog(@"%lu %lu %lu",Gn,[Dirlist count],[self.MoxGameListNF count ]  );
        
         if (!(Fn < [Dirlist count])) {
             break;
         }
         _File=[Dirlist objectAtIndex:Fn];
 
-     //   NSLog(@"%@ %@",[NSString stringWithFormat:@"%@.zip",[_GAME Name] ] , _File);
+     //   //NSLog(@"%@ %@",[NSString stringWithFormat:@"%@.zip",[_GAME Name] ] , _File);
         
        
         
         switch ([_File compare:[NSString stringWithFormat:@"%@.zip",[_GAME Name] ] ]) {
             case NSOrderedAscending:
-               // NSLog(@"mayor");
+               // //NSLog(@"mayor");
                 Gn--;
                 break;
             case NSOrderedSame:
-               // NSLog(@"IGUAL");
-                [self.MoxGameListGood addObject:_GAME];
+               // //NSLog(@"IGUAL");
+                [_GAME setEncontrado:YES];
                 break;
             case NSOrderedDescending:
-                //NSLog(@"menor");
+                ////NSLog(@"menor");
+                [_GAME setEncontrado:NO];
                 Fn--;
                 
 
@@ -310,14 +319,28 @@
     Fn++;
     }
     
+    
     [self StoreGameList];
+    [self ApplyFilters];
+    
+    if ([self ShowGood]) {
+    
+        if ( [ [self.FilterField stringValue] length ]==0 ) {
+            [self.Tabla reloadData];
+            
+        } else {
+            [self Change_filter:[self FilterField]];
+        }
+        
+    }
+    
+    
     
 }
 
 -(void) StoreGameList {
     NSMutableDictionary * Storedict=[NSMutableDictionary dictionary];
     [Storedict setValue:[self MoxGameListNF] forKey:@"Lista"];
-    [Storedict setValue:[self MoxGameListGood] forKey:@"Good"];
 
     [NSKeyedArchiver archiveRootObject:Storedict toFile:[[NSBundle mainBundle] pathForResource:@"gamelist" ofType:@"cfg" ]  ];
     
@@ -381,21 +404,79 @@
     
     NSFileHandle *file;
     file = [pipe fileHandleForReading];
-    NSLog(@"Run Game");
+    //NSLog(@"Run Game");
     [task launch];
-    NSLog(@"EndRungame");
+    //NSLog(@"EndRungame");
     
     NSData *data;
     data = [file readDataToEndOfFile];
     NSString *string;
     string = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
     
-    NSLog(@"%@",string);
+    //NSLog(@"%@",string);
     
     
     
 }
 
+-(void) ApplyFilters {
+    [self.MoxGameListPreFilter removeAllObjects];
+    [self.MoxGamesList removeAllObjects];
+    NSArray *TmpArr;
+    NSArray *TmpArr2;
+    if ([self ShowFavorites]) {
+        NSPredicate * FiltroGood=[NSPredicate predicateWithFormat:@"Favorito == YES"];
+        TmpArr = [self.MoxGameListNF filteredArrayUsingPredicate:FiltroGood];
+        //NSLog(@"Favoritos %lu", [TmpArr count]);
+        
+    }
+    if ([self ShowGood]) {
+        NSPredicate * Filtro=[NSPredicate predicateWithFormat:@"Encontrado == YES"];
+        TmpArr2 = [[self ShowFavorites]?TmpArr:self.MoxGameListNF filteredArrayUsingPredicate:Filtro];
+        
+        //NSLog(@"Goods %lu", [TmpArr2 count]);
+
+    }
+    if ( ![self ShowGood] && ![self ShowFavorites]  ) {
+        TmpArr = [self MoxGameListNF];
+        //NSLog(@"todofalse");
+    }
+    //NSLog(@"FILTRANDO %u %u  ",[self ShowFavorites],[self ShowGood]);
+    //NSLog(@"tmparr %lu",[TmpArr count]  );
+    
+    [self.MoxGameListPreFilter addObjectsFromArray:[self ShowGood]?TmpArr2:TmpArr];
+    [self.MoxGamesList addObjectsFromArray:[self MoxGameListPreFilter]];
+    //NSLog(@"%lu",[self.MoxGameListPreFilter count]);
+    
+}
+-(IBAction)editFavorite:(id)sender
+{ NSButton * Boton = (NSButton *) sender;
+    
+    if ([self.MoxGamesList count]<[self.Tabla selectedRow] ) {
+        return;
+    }
+    MoxGame *Game;
+    Game=[self.MoxGamesList objectAtIndex:[self.Tabla selectedRow]];
+
+    if ([[Boton identifier] isEqualToString:@"add" ] ) {
+        
+        //en teoria este es el puntero al mismo objeto en MoxGameListNF;
+        [Game setFavorito:YES];
+        [self StoreGameList];
+      
+        
+    } else {
+        [Game setFavorito:NO];
+        [self StoreGameList];
+
+        if ([self ShowFavorites]) {
+            //NSLog(@"RELOAD");
+            [self ApplyFilters];
+            [self.Tabla reloadData];
+        }
+        
+    }
+}
 
 
 @end

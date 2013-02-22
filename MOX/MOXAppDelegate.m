@@ -27,13 +27,18 @@
 {
 
     NSDictionary *Config=[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle]pathForResource:@"gamelist" ofType:@"cfg"]];
-    NSMutableArray * JuegosFromFile=[[NSMutableArray alloc] initWithArray:[Config valueForKey:@"Lista" ]];
-    NSMutableArray * JuegosEncontrados=[[NSMutableArray alloc] initWithArray:[Config valueForKey:@"Good" ]];
-
+  
+    NSArray * ArrayTemporal=[Config valueForKey:@"Lista"];
+    NSMutableArray * JuegosFromFile=[[NSMutableArray alloc] initWithArray:ArrayTemporal];
+    NSMutableArray * JuegosEncontrados=[[NSMutableArray alloc] init ];
+        NSMutableArray * JuegosFavoritos=[[NSMutableArray alloc] init  ];
+    
+       
+    
+    
+    
     NSDictionary *Paths=[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"paths" ofType:@"cfg"]];
-    
-    
-    
+        
     
     self.MOXMasterViewC = [[MOXMasterViewController alloc] initWithNibName:@"MOXMasterViewController" bundle:nil];
     self.MOXMasterViewC.MoxConfig = [[MOXConfigData alloc] initWithValues:@"" GlobalPath:@"" RomPath:@"" SnapPath:@""  ];
@@ -55,19 +60,22 @@
     NSString *tmpDelay=[Paths valueForKey:@"Delay"];
     [self.MOXMasterViewC.MoxConfig setDelay:[tmpDelay integerValue]];
     NSString *tmpShowGood=[Paths valueForKey:@"ShowGood"];
+     self.MOXMasterViewC.ShowGood=[tmpShowGood isEqualToString:@"YES"];
+    NSString *tmpShowFavorites=[Paths valueForKey:@"ShowFavorites"];
+    self.MOXMasterViewC.ShowFavorites=[tmpShowFavorites isEqualToString:@"YES"];
     
-    self.MOXMasterViewC.ShowGood=[tmpShowGood isEqualToString:@"YES"];
     
-    self.MOXMasterViewC.MoxGamesList =[[NSMutableArray alloc ] initWithArray:JuegosFromFile ];
+    
+    
+    self.MOXMasterViewC.MoxGamesList =[[NSMutableArray alloc ] init ];
     //[self.MOXMasterViewC setMoxGamesList:Juegos];
 
     self.MOXMasterViewC.MoxGameListNF = [[NSMutableArray alloc]initWithArray:JuegosFromFile]  ;
     //()[self.MOXMasterViewC setMoxGameListNF:Juegos];
-    self.MOXMasterViewC.MoxGameListGood=[[NSMutableArray alloc] initWithArray:JuegosEncontrados];
-   
-    NSLog(@"%lu",[self.MOXMasterViewC.MoxGameListGood count]);
     
+    self.MOXMasterViewC.MoxGameListPreFilter = [[NSMutableArray alloc] init];
     
+    [self.MOXMasterViewC ApplyFilters];
     
     
     [self.window.contentView addSubview:self.self.MOXMasterViewC.view];
@@ -82,6 +90,15 @@
         [self.MOXMasterViewC.Checkbox setState:NSOffState];
 
     }
+    if ([self.MOXMasterViewC ShowFavorites]) {
+        [self.MOXMasterViewC.CheckboxFav setState:NSOnState];
+    } else {
+        [self.MOXMasterViewC.CheckboxFav setState:NSOffState];
+        
+    }
+    
+    NSLog(@"%p %p  ",[self.MOXMasterViewC.MoxGamesList objectAtIndex:0],[self.MOXMasterViewC.MoxGameListNF objectAtIndex:0]  );
+    
     
 }
 -(IBAction)getXML:(id)sender {

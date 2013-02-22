@@ -14,8 +14,8 @@
 @property(strong) NSString *Manufacturer;
 @property(strong) NSString *Year;
 @property(strong) NSString *Parent;
-
-
+@property(assign) BOOL Encontrado;
+@property(assign) BOOL Favorito;
 @property(assign) long  int GameId;
 -(id) initWithTitle:(NSString*)Name Description:(NSString *)Description Manufacturer:(NSString *)Manufacturer Year:(NSString *)Year   GameId:(int) GameId Parent:(NSString*)Parent;
 

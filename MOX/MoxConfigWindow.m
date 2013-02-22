@@ -187,7 +187,9 @@
     [StoreDic setObject:[NSString stringWithFormat:@"%lu", [self.ConfigDataWindow SampleRate]] forKey:@"SampleRate"];
     [StoreDic setObject:[NSString stringWithFormat:@"%lu", [self.ConfigDataWindow Delay]] forKey:@"Delay"];
     [StoreDic setObject:[self.ParentObject ShowGood]?@"YES":@"NO" forKey:@"ShowGood"];
-    NSLog(@"%@",[self.ConfigDataWindow keepAspect]?@"YES":@"NO");
+    [StoreDic setObject:[self.ParentObject ShowFavorites]?@"YES":@"NO" forKey:@"ShowFavorites"];
+
+
     
     [NSKeyedArchiver archiveRootObject:StoreDic toFile:[[NSBundle mainBundle] pathForResource:@"paths" ofType:@"cfg" ]];
 
