@@ -11,6 +11,8 @@
 #import "MoxGame.h"
 #import "MOXConfigData.h"
 #import "TBXML.h"
+#import "PCFadedImageView.h"
+
 @interface MOXAppDelegate()
 @property (nonatomic,strong) IBOutlet MOXMasterViewController *MOXMasterViewC ;
 
@@ -25,17 +27,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-
     NSDictionary *Config=[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle]pathForResource:@"gamelist" ofType:@"cfg"]];
   
     NSArray * ArrayTemporal=[Config valueForKey:@"Lista"];
     NSMutableArray * JuegosFromFile=[[NSMutableArray alloc] initWithArray:ArrayTemporal];
-    NSMutableArray * JuegosEncontrados=[[NSMutableArray alloc] init ];
-        NSMutableArray * JuegosFavoritos=[[NSMutableArray alloc] init  ];
-    
-       
-    
-    
     
     NSDictionary *Paths=[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"paths" ofType:@"cfg"]];
         
@@ -80,10 +75,9 @@
     
     [self.window.contentView addSubview:self.self.MOXMasterViewC.view];
     self.MOXMasterViewC.view.frame = ((NSView*)self.window.contentView).bounds;
-    
+    [self.MOXMasterViewC setParentWindow:[self window]];
     [self.MOXMasterViewC.Tabla setDoubleAction:@selector(double_click:)];
     [self.MOXMasterViewC.Tabla setAction:@selector(single:)];
-    
     if ([self.MOXMasterViewC ShowGood]) {
         [self.MOXMasterViewC.Checkbox setState:NSOnState];
     } else {
@@ -97,8 +91,7 @@
         
     }
     
-    NSLog(@"%p %p  ",[self.MOXMasterViewC.MoxGamesList objectAtIndex:0],[self.MOXMasterViewC.MoxGameListNF objectAtIndex:0]  );
-    
+  //  NSLog(@"%p %p  ",[self.MOXMasterViewC.MoxGamesList objectAtIndex:0],[self.MOXMasterViewC.MoxGameListNF objectAtIndex:0]  );
     
 }
 -(IBAction)getXML:(id)sender {

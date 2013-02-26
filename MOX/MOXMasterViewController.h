@@ -14,7 +14,7 @@
 @property (strong) NSMutableArray *MoxGameListPreFilter;
 @property (strong) IBOutlet NSButton *Checkbox;
 @property (strong) IBOutlet NSButton *CheckboxFav;
-
+@property (strong) NSWindow * ParentWindow;
 @property (strong) NSMutableArray *MoxGameListNF;
 @property (strong) IBOutlet NSButton *BotonReload;
 @property (strong) IBOutlet NSTableView *Tabla;
@@ -32,7 +32,28 @@
 -(void) RomFastAudit;
 -(void) Close_Config;
 -(void) ApplyFilters;
+
 -(void) localProcessXMLFromBinary ;
 -(NSView *) tableView: (NSTableView *) tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row ;
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView ;
+@end
+
+
+@interface PCCountedColor : NSObject
+
+@property (assign) NSUInteger count;
+@property (retain) NSColor *color;
+
+- (id)initWithColor:(NSColor*)color count:(NSUInteger)count;
+
+@end
+
+@interface NSColor (DarkAddition)
+
+- (BOOL)pc_isDarkColor;
+- (BOOL)pc_isDistinct:(NSColor*)compareColor;
+- (NSColor*)pc_colorWithMinimumSaturation:(CGFloat)saturation;
+- (BOOL)pc_isBlackOrWhite;
+- (BOOL)pc_isContrastingColor:(NSColor*)color;
+
 @end

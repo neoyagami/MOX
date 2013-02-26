@@ -11,6 +11,7 @@
 #import "MoxConfigWindow.h"
 #import "MOXConfigData.h"
 #import "TBXML.h"
+
 @interface MOXMasterViewController ()
 @property (nonatomic,strong) IBOutlet MoxConfigWindow *MoxConfigW;
 @end
@@ -189,7 +190,7 @@
         
     }
     [self StoreGameList];
-    [self.MoxGamesList addObjectsFromArray:self.MoxGameListNF];
+    [self ApplyFilters];
     [self.Tabla reloadData];
     
       
@@ -227,7 +228,8 @@
 }
 
 -(IBAction)GameSelected:(id)sender {
-     NSTableView *v = (NSTableView *)sender;
+   
+    NSTableView *v = (NSTableView *)sender;
   
     //NSLog(@"sc %lu",[v selectedRow]);
     if (![v isRowSelected:[v selectedRow]])
@@ -238,11 +240,69 @@
     NSString * SnapGame=[[NSString alloc] initWithFormat:@"%@/%@/0000.png",[self.MoxConfig SnapPath],[Game Name] ];
     NSImage * Imagen=[[NSImage alloc] initWithContentsOfFile:SnapGame];
     
+    
     if (Imagen==0) {
         Imagen=[[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForImageResource:@"noimage.png"]];
-                }
+    }
+    NSRect drawRect;
+    NSSize imageSize = [Imagen size];
+    NSSize NuevoSize=imageSize;
+
+    NSLog(@"%f %f",imageSize.height,imageSize.width);
+
     
-    [self.ImageVIEW setImage:Imagen];
+  
+        float RatioX=self.ImageVIEW.bounds.size.width/imageSize.width;
+        float RatioY= self.ImageVIEW.bounds.size.height/imageSize.height;
+        NSSize SizeParent=self.ImageVIEW.bounds.size;
+        NSLog(@"rx:%f ry:%f  ",RatioX,RatioY);
+        
+        if (RatioY>RatioX) {
+            NuevoSize.width=imageSize.width*RatioX;
+            NuevoSize.height=imageSize.height*RatioX;
+
+        } else {
+            NuevoSize.width=imageSize.width*RatioY;
+            NuevoSize.height=imageSize.height*RatioY;
+
+        }
+    
+    
+    NSLog(@"Orig %f %f",imageSize.width,imageSize.height);
+
+    NSLog(@"Post %f %f",NuevoSize.width,NuevoSize.height);
+    
+    NSImage * Cuadro=[[NSImage alloc] initWithSize:SizeParent  ];
+    NSImage * Over=[[NSImage alloc] initWithSize:SizeParent];
+    drawRect = NSMakeRect(0, 0, NuevoSize.width, NuevoSize.height);
+    
+    [Over lockFocus];
+    [[NSColor blackColor] setFill];;
+    [NSBezierPath fillRect:NSMakeRect(0, 0, SizeParent.width, SizeParent.height)];
+    [Over unlockFocus];
+    
+    [Cuadro lockFocus];
+     [Over drawInRect:NSMakeRect(0,0, SizeParent.width, SizeParent.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    [Imagen drawInRect:NSMakeRect(  (SizeParent.width-NuevoSize.width)/2  ,(SizeParent.height-NuevoSize.height)/2, NuevoSize.width, NuevoSize.height) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    [Cuadro unlockFocus];
+    
+    CGImageRef cgImage = [Cuadro CGImageForProposedRect:NULL context:nil hints:nil];
+    NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage:cgImage] ;
+    NSImage *finalImage = [[NSImage alloc] initWithSize:SizeParent] ;
+    
+    [finalImage addRepresentation:bitmapRep];
+    NSRect RectaGradiente=NSMakeRect((SizeParent.width-NuevoSize.width)/2 ,((SizeParent.height-NuevoSize.height)/2) ,30,NuevoSize.height);
+    
+    NSGradient *Gradiente=[[NSGradient alloc] initWithStartingColor:[NSColor blackColor] endingColor:[[NSColor blackColor] colorWithAlphaComponent:0 ] ];
+    [Cuadro lockFocus];
+    [Gradiente drawInRect:RectaGradiente angle:0.0];
+    [Gradiente drawInRect:NSMakeRect((SizeParent.width-NuevoSize.width)/2 ,  (((SizeParent.height-NuevoSize.height)/2)) +(NuevoSize.height)-30, NuevoSize.width, 30) angle:270]  ;
+    [Gradiente drawInRect:NSMakeRect(NuevoSize.width+((SizeParent.width-NuevoSize.width)/2)-30, ((SizeParent.height-NuevoSize.height)/2)+30, 30, NuevoSize.height-30) angle:180];
+    [Gradiente drawInRect:NSMakeRect((SizeParent.width-NuevoSize.width)/2 , ((SizeParent.height-NuevoSize.height)/2), NuevoSize.width, 30) angle:90];
+
+    [Cuadro unlockFocus];
+    
+    [self.ImageVIEW setImage:Cuadro];
     //[self.ImageVIEW setima ]
     
     
@@ -262,6 +322,18 @@
 
 }
 
+- (void) tableViewSelectionDidChange: (NSNotification *) notification
+{
+    long int row;
+    row = [self.Tabla selectedRow];
+    
+    if (row == -1) {
+        NSLog(@"NADASELECT");
+            } else {
+                [self GameSelected:[self Tabla]];
+                    }
+    
+} // tableViewSelectionDidChange
 
 -(void) RomFastAudit {
     NSError *Error;
@@ -353,6 +425,9 @@
     
     if ([self.MoxConfig keepAspect]) {
         [Opciones addObject:@"-ka"];
+    } else {
+        [Opciones addObject:@"-noka"];
+
     }
     
     [Opciones addObject:@"-samplerate"  ];
