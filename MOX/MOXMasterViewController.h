@@ -10,7 +10,7 @@
 #import "MOXConfigData.h"
 
 @interface MOXMasterViewController : NSViewController
-@property (strong ) NSMutableArray *MoxGamesList;
+@property (strong) NSMutableArray *MoxGamesList;
 @property (strong) NSMutableArray *MoxGameListPreFilter;
 @property (strong) IBOutlet NSButton *Checkbox;
 @property (strong) IBOutlet NSButton *CheckboxFav;
@@ -24,6 +24,7 @@
 @property (strong) NSMutableArray *DirList;
 @property (assign) BOOL ShowGood;
 @property (assign) BOOL ShowFavorites;
+//@property (strong) IBOutlet NSScrollView *scrollview;
 -(IBAction)Click_Checkbox:(id)sender;
 -(IBAction)Show_Config:(id)Sender;
 -(IBAction)Change_filter:(id)sender;

@@ -10,10 +10,10 @@
 #import "MOXConfigData.h"
 #import "MOXMasterViewController.h"
 @interface MoxConfigWindow : NSWindowController
-@property ( strong) IBOutlet NSTextField *Ruta;
-@property ( strong) IBOutlet NSTextField *Snap;
-@property ( strong) IBOutlet NSTextField *RutaMameBin;
-@property ( strong) IBOutlet NSTextField *Globaldir;
+@property (strong) IBOutlet NSTextField *Ruta;
+@property (strong) IBOutlet NSTextField *Snap;
+@property (strong) IBOutlet NSTextField *RutaMameBin;
+@property (strong) IBOutlet NSTextField *Globaldir;
 @property (strong) IBOutlet NSPopUpButton *FullorWindow;
 @property (strong) IBOutlet NSPopUpButton *SampleRate;
 @property (strong) IBOutlet NSPopUpButton *Delay;

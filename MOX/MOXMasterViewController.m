@@ -67,7 +67,17 @@
     [self.Tabla setDoubleAction:@selector(double_click:)];
     [self.Tabla setAction:@selector(GameSelected:)];
     
+    /*NSImageView *IV=[[NSImageView alloc] init];
+    NSImage * Imagen=[[NSImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForImageResource:@"noimage.png"]];
+
+    [IV setBoundsSize:NSMakeSize(100, 100)];
+    [IV setImage:Imagen];
+    IV.frame = CGRectMake(100, 100, 100, 100);
+    [self.scrollview addSubview:IV]; 
+    [self.scrollview addSubview:IV];*/
+
     return self;
+    
 }
 
 -(NSView *) tableView: (NSTableView *) tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
