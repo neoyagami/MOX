@@ -13,8 +13,6 @@
 		DD036B5716D4778D0050B001 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = DD036B5616D4778C0050B001 /* noimage.png */; };
 		DD10F23A1710A372005569C9 /* M0X.icns in Resources */ = {isa = PBXBuildFile; fileRef = DD10F2391710A372005569C9 /* M0X.icns */; };
 		DD245B3316CF186C00F37A3E /* MoxGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DD245B3216CF186C00F37A3E /* MoxGame.m */; };
-		DD26369C16D51EA800C235BC /* Logomox.icns in Resources */ = {isa = PBXBuildFile; fileRef = DD26369B16D51EA800C235BC /* Logomox.icns */; };
-		DD26369E16D51ED100C235BC /* Logomox.icns in Resources */ = {isa = PBXBuildFile; fileRef = DD26369D16D51ED100C235BC /* Logomox.icns */; };
 		DD3DFA1A16D54226003E13A4 /* gamelist.cfg in Resources */ = {isa = PBXBuildFile; fileRef = DD3DFA1916D54226003E13A4 /* gamelist.cfg */; };
 		DD3DFA1C16D54553003E13A4 /* paths.cfg in Resources */ = {isa = PBXBuildFile; fileRef = DD3DFA1B16D54553003E13A4 /* paths.cfg */; };
 		DD4DB18916D1B248005C714B /* MoxConfigWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4DB18716D1B248005C714B /* MoxConfigWindow.m */; };
@@ -32,6 +30,7 @@
 		DDA63D2716CEB8C60093F596 /* MOXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA63D2616CEB8C60093F596 /* MOXTests.m */; };
 		DDF9337A16CEECCF0020F299 /* MOXMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF9337816CEECCF0020F299 /* MOXMasterViewController.m */; };
 		DDF9337B16CEECCF0020F299 /* MOXMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF9337916CEECCF0020F299 /* MOXMasterViewController.xib */; };
+		FFF7722E1A8C4CE900A7DA9F /* TBXML.h in Sources */ = {isa = PBXBuildFile; fileRef = FFF7722D1A8C4C2900A7DA9F /* TBXML.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -57,15 +56,12 @@
 
 /* Begin PBXFileReference section */
 		DD036B4316D3CF050050B001 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		DD036B4816D409100050B001 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TBXML.h; path = "../../../Downloads/TBXML-master/TBXML-Headers/TBXML.h"; sourceTree = "<group>"; };
 		DD036B4B16D409200050B001 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		DD036B5416D475DD0050B001 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		DD036B5616D4778C0050B001 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		DD10F2391710A372005569C9 /* M0X.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = M0X.icns; sourceTree = "<group>"; };
 		DD245B3116CF186C00F37A3E /* MoxGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoxGame.h; sourceTree = "<group>"; };
 		DD245B3216CF186C00F37A3E /* MoxGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoxGame.m; sourceTree = "<group>"; };
-		DD26369B16D51EA800C235BC /* Logomox.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Logomox.icns; path = ../../Logomox.icns; sourceTree = "<group>"; };
-		DD26369D16D51ED100C235BC /* Logomox.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Logomox.icns; sourceTree = "<group>"; };
 		DD3DFA1916D54226003E13A4 /* gamelist.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gamelist.cfg; sourceTree = "<group>"; };
 		DD3DFA1B16D54553003E13A4 /* paths.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = paths.cfg; sourceTree = "<group>"; };
 		DD4DB18616D1B248005C714B /* MoxConfigWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoxConfigWindow.h; sourceTree = "<group>"; };
@@ -95,6 +91,7 @@
 		DDF9337716CEECCF0020F299 /* MOXMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOXMasterViewController.h; sourceTree = "<group>"; };
 		DDF9337816CEECCF0020F299 /* MOXMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOXMasterViewController.m; sourceTree = "<group>"; };
 		DDF9337916CEECCF0020F299 /* MOXMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MOXMasterViewController.xib; sourceTree = "<group>"; };
+		FFF7722D1A8C4C2900A7DA9F /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +119,6 @@
 		DD036B5116D471FA0050B001 /* Imagen */ = {
 			isa = PBXGroup;
 			children = (
-				DD26369B16D51EA800C235BC /* Logomox.icns */,
 				DD036B5416D475DD0050B001 /* noimage.png */,
 			);
 			name = Imagen;
@@ -169,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				DD036B4B16D409200050B001 /* TBXML.m */,
-				DD036B4816D409100050B001 /* TBXML.h */,
+				FFF7722D1A8C4C2900A7DA9F /* TBXML.h */,
 			);
 			name = XML;
 			sourceTree = "<group>";
@@ -178,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				DD10F2391710A372005569C9 /* M0X.icns */,
-				DD26369D16D51ED100C235BC /* Logomox.icns */,
 				DD036B5616D4778C0050B001 /* noimage.png */,
 				DDA63D0216CEB8C50093F596 /* MOX */,
 				DDA63D1F16CEB8C60093F596 /* MOXTests */,
@@ -299,7 +294,7 @@
 			name = MOXTests;
 			productName = MOXTests;
 			productReference = DDA63D1916CEB8C60093F596 /* MOXTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -341,8 +336,6 @@
 				DD4DB18A16D1B248005C714B /* MoxConfigWindow.xib in Resources */,
 				DD036B5516D475DD0050B001 /* noimage.png in Resources */,
 				DD036B5716D4778D0050B001 /* noimage.png in Resources */,
-				DD26369C16D51EA800C235BC /* Logomox.icns in Resources */,
-				DD26369E16D51ED100C235BC /* Logomox.icns in Resources */,
 				DD3DFA1A16D54226003E13A4 /* gamelist.cfg in Resources */,
 				DD3DFA1C16D54553003E13A4 /* paths.cfg in Resources */,
 				DD10F23A1710A372005569C9 /* M0X.icns in Resources */,
@@ -380,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFF7722E1A8C4CE900A7DA9F /* TBXML.h in Sources */,
 				DDA63D0916CEB8C50093F596 /* main.m in Sources */,
 				DDA63D1016CEB8C50093F596 /* MOXAppDelegate.m in Sources */,
 				DDF9337A16CEECCF0020F299 /* MOXMasterViewController.m in Sources */,
